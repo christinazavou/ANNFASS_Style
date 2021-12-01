@@ -1,0 +1,62 @@
+
+epoch: 20
+iteration: 0
+
+g_steps: 1
+d_steps: 1
+r_steps: 4
+
+disc_dim: 32
+gen_dim: 32
+style_dim: 8
+
+save_iter: 2000
+log_iter: 500
+model_module: runners.style_encoder.modelAEadj_rot_mul
+recon_loss: MSE
+lr: 0.0001
+se_lr: 0.0001
+kernel: 5
+dilation: True
+pooling: max
+
+data_filename: model_filled.binvox
+style_filename: model_filled.binvox
+datapath: /mnt/beegfs/czavou01/decorgan-logs/splits/03001627_train_objs_norm_and_random_rot/chair_random_rot_train.txt
+stylepath: /mnt/beegfs/czavou01/decorgan-logs/splits/03001627_train_objs_norm_and_random_rot/style_chair_random_rot_64.txt
+data_cache_dir: /mnt/beegfs/czavou01/decorgan-logs/data_cached_2_i16o128
+style_cache_dir: /mnt/beegfs/czavou01/decorgan-logs/data_cached_2_i16o128
+style_dir: /mnt/beegfs/czavou01/decorgan-logs/preprocessed_data/03001627_train_objs_norm_and_random_rot
+data_dir: /mnt/beegfs/czavou01/decorgan-logs/preprocessed_data/03001627_train_objs_norm_and_random_rot
+
+checkpoint_dir: /mnt/beegfs/czavou01/decorgan-models/style_encoder/i16o128/rot_mul/checkpoints
+sample_dir: /mnt/beegfs/czavou01/decorgan-models/style_encoder/i16o128/rot_mul/samples/
+export_dir: /mnt/beegfs/czavou01/decorgan-models/style_encoder/i16o128/rot_mul/encodings/
+test_fig_3_dir: /mnt/beegfs/czavou01/decorgan-models/style_encoder/i16o128/rot_mul/test_fig_3
+style_codes_dir: /mnt/beegfs/czavou01/decorgan-models/style_encoder/i16o128/rot_mul/style_codes
+
+input_size: 16
+output_size: 128
+
+asymmetry: True
+
+alpha: 0.5
+beta: 10.0
+
+train: True
+style_codes: False
+test_fig_3: False
+export: False
+debug: False
+
+prepvox: False
+prepvoxstyle: False
+evalvox: False
+prepimg: False
+prepimgreal: False
+evalimg: False
+prepFID: False
+prepFIDmodel: False
+prepFIDreal: False
+evalFID: False
+ui: False

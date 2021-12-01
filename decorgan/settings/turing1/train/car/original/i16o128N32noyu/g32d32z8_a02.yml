@@ -1,0 +1,62 @@
+
+epoch: 20
+iteration: 0
+
+g_steps: 1
+d_steps: 1
+r_steps: 4
+
+gen_dim: 32
+disc_dim: 32
+style_dim: 8
+
+save_iter: 4000
+log_iter: 1000
+model_module: runners.original.modelAE_flexdp2
+recon_loss: MSE
+style_batch: 4
+kernel: 5
+dilation: True
+pooling: max
+
+buildings_dir:
+data_filename: model_depth_fusion.binvox
+style_filename: model_depth_fusion.binvox
+datapath: /home/czavou01/decorgan-logs/splits/car/content_car_train_2Knoyu.txt
+stylepath: /home/czavou01/decorgan-logs/splits/car/style_car_32noyu.txt
+data_cache_dir: /home/czavou01/decorgan-logs/data_cached_2_in16_out128
+style_cache_dir: /home/czavou01/decorgan-logs/data_cached_2_in16_out128
+data_dir: /home/czavou01/decorgan-logs/data/02958343
+style_dir: /home/czavou01/decorgan-logs/data/02958343
+
+checkpoint_dir: /mnt/beegfs/czavou01/decorgan-models/cars/original/i16o128N32noyu/g32d32z8_a02/checkpoints
+sample_dir: /mnt/beegfs/czavou01/decorgan-models/cars/original/i16o128N32noyu/g32d32z8_a02/samples
+export_dir: /mnt/beegfs/czavou01/decorgan-models/cars/original/i16o128N32noyu/g32d32z8_a02/encodings
+test_fig_3_dir: /mnt/beegfs/czavou01/decorgan-models/cars/original/i16o128N32noyu/g32d32z8_a02/test_fig_3
+style_codes_dir: /mnt/beegfs/czavou01/decorgan-models/cars/original/i16o128N32noyu/g32d32z8_a02/style_codes
+
+input_size: 16
+output_size: 128
+
+asymmetry: True
+
+alpha: 0.2
+beta: 10.0
+
+train: True
+style_codes: False
+test_fig_3: False
+export: False
+debug: False
+
+prepvox: False
+prepvoxstyle: False
+evalvox: False
+prepimg: False
+prepimgreal: False
+evalimg: False
+prepFID: False
+prepFIDmodel: False
+prepFIDreal: False
+evalFID: False
+ui: False

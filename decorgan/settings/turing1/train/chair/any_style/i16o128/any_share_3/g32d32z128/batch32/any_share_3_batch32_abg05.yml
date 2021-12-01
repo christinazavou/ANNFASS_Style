@@ -1,0 +1,70 @@
+
+epoch: 20
+iteration: 0
+
+g_steps: 1
+d_steps: 1
+r_steps: 4
+
+gen_dim: 32
+disc_dim: 32
+style_dim: 128
+
+stride_factor: 2
+num_triplets: 256
+num_pairs: 256
+
+batch_size: 32
+
+save_iter: 70
+log_iter: 35
+model_module: runners.any_style.modelAEany_share_3_batchdiv
+recon_loss: MSE
+lr: 0.0001
+se_lr: 0.0001
+kernel: 5
+dilation: True
+pooling: max
+
+data_filename: model_depth_fusion.binvox
+style_filename: model_depth_fusion.binvox
+datapath: /home/czavou01/decorgan-logs/splits/content_chair_train.txt
+stylepath: /home/czavou01/decorgan-logs/splits/content_chair_train.txt
+data_cache_dir: /home/czavou01/decorgan-logs/data_cached_2
+style_cache_dir: /home/czavou01/decorgan-logs/data_cached_2
+style_dir: /home/czavou01/decorgan-logs/data/03001627
+data_dir: /home/czavou01/decorgan-logs/data/03001627
+
+checkpoint_dir: /mnt/beegfs/czavou01/decorgan-models/chair/i26o128/any_share3_batch32_abg05/checkpoints
+sample_dir: /mnt/beegfs/czavou01/decorgan-models/chair/i26o128/any_share3_batch32_abg05/samples_again
+export_dir: /mnt/beegfs/czavou01/decorgan-models/chair/i26o128/any_share3_batch32_abg05/encodings
+test_fig_3_dir: /mnt/beegfs/czavou01/decorgan-models/chair/i26o128/any_share3_batch32_abg05/test_fig_3
+style_codes_dir: /mnt/beegfs/czavou01/decorgan-models/chair/i26o128/any_share3_batch32_abg05/style_codes
+
+input_size: 16
+output_size: 128
+
+asymmetry: True
+
+alpha: 0.5
+beta: 10.0
+gamma: 0.5
+delta: 0.5
+
+train: True
+style_codes: False
+test_fig_3: False
+export: False
+debug: False
+
+prepvox: False
+prepvoxstyle: False
+evalvox: False
+prepimg: False
+prepimgreal: False
+evalimg: False
+prepFID: False
+prepFIDmodel: False
+prepFIDreal: False
+evalFID: False
+ui: False

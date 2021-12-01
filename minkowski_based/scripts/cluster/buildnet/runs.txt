@@ -1,0 +1,4 @@
+
+make train-PS-MultiGpu PS_MODEL=HRNet3S2BD256 PLY_SAMPLES=ply_100K
+
+make train-PS PARTITION=1080ti-long FREQ=100 TEST_STAT_FREQ=1000 RESULT_DIR=/mnt/nfs/work1/kalo/maverkiou/zavou/mink_results/ps_on_buildnet/SGD_StepLR_lr1e-2 OPTIMIZER_ARGS="" SCHEDULER_ARGS=""

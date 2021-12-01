@@ -1,0 +1,70 @@
+
+epoch: 20
+iteration: 0
+
+g_steps: 1
+d_steps: 1
+r_steps: 4
+
+gen_dim: 32
+disc_dim: 32
+style_dim: 8
+
+save_iter: 1000
+log_iter: 500
+model_module: runners.style_encoder.modelAEadj_flexdp2Speed
+recon_loss: MSE
+lr: 0.0001
+kernel: 5
+dilation: True
+pooling: max
+
+data_filename: model_filled.binvox
+style_filename: model_filled.binvox
+datapath: /home/czavou01/decorgan-logs/splits/buildnet_buildings/buildnet_buildings_setA.txt
+stylepath: /home/czavou01/decorgan-logs/splits/buildnet_buildings/buildnet_buildings_setAstyles32.txt
+data_cache_dir: /home/czavou01/decorgan-logs/data_cached_2
+style_cache_dir: /home/czavou01/decorgan-logs/data_cached_2
+data_dir: /home/czavou01/decorgan-logs/preprocessed_data/buildnet_buildings/normalizedObj
+style_dir: /home/czavou01/decorgan-logs/preprocessed_data/buildnet_buildings/normalizedObj
+
+checkpoint_dir: /home/czavou01/decorgan-models/buildnet_buildings/setA/ajd_flexdp2/in16_out128/checkpoints
+sample_dir: /home/czavou01/decorgan-models/buildnet_buildings/setA/ajd_flexdp2/in16_out128/samples/
+export_dir: /home/czavou01/decorgan-models/buildnet_buildings/setA/ajd_flexdp2/in16_out128/encodings/
+test_fig_3_dir: /home/czavou01/decorgan-models/buildnet_buildings/setA/ajd_flexdp2/in16_out128/test_fig_3
+style_codes_dir: /home/czavou01/decorgan-models/buildnet_buildings/setA/ajd_flexdp2/in16_out128/style_codes
+
+input_size: 16
+output_size: 128
+
+asymmetry: True
+
+alpha: 0.5
+beta: 10.0
+
+train: False
+style_codes: False
+test_fig_3: False
+export: False
+debug: False
+
+output_for_eval_dir: /home/czavou01/decorgan-models/buildnet_buildings/setA/ajd_flexdp2/in16_out128/output_for_eval
+output_for_FID_dir: /home/czavou01/decorgan-models/buildnet_buildings/setA/ajd_flexdp2/in16_out128/output_for_FID
+eval_output_dir: /home/czavou01/decorgan-models/buildnet_buildings/setA/ajd_flexdp2/in16_out128/eval_output
+
+unique_patches_dir: /home/czavou01/decorgan-models/unique_patches_32_buildings_setA_i16o128
+cls_dir: /home/czavou01/decorgan-logs/Clsshapenet_weights
+
+prepvox: False
+prepvoxstyle: False
+evalvox: False
+
+prepimg: False
+prepimgreal: False
+evalimg: False
+
+prepFID: True
+prepFIDmodel: True
+prepFIDreal: True
+evalFID: True
+ui: False

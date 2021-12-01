@@ -1,0 +1,68 @@
+# Parameters for the airplane
+
+SOLVER:
+  gpu: 0,
+  max_iter: 144000 #60 epochs
+  test_iter: 200
+  test_every_iter: 2400
+  run: train
+  lr_type: 'cos'
+  learning_rate: 0.1
+  gamma: 0.1
+ # step_size: 3000,
+
+DATA:
+  train:
+    dtype: points
+    depth: 6
+    axis: y
+    node_dis: False
+    shuffle: True
+    take: -1
+    adaptive: False
+    normalise: False
+    location: /mnt/nfs/work1/kalo/maverkiou/maria/withcolor/
+    file_list: /mnt/nfs/work1/kalo/maverkiou/maria/splits/train_split.txt
+    label_location: /mnt/nfs/work1/kalo/maverkiou/maria/point_labels_32
+    batch_size: 8
+    mask_ratio: 0.7
+    return_pts: True
+    use_majority: True
+    hsv: False
+    rot_num: 12
+
+  test: 
+    dtype: points
+    depth: 6
+    axis: y
+    node_dis: False
+    adaptive: False
+    location: /mnt/nfs/work1/kalo/maverkiou/maria/withcolor/
+    file_list: /mnt/nfs/work1/kalo/maverkiou/maria/splits/val_split.txt
+    label_location: /mnt/nfs/work1/kalo/maverkiou/maria/point_labels_32
+    mask_ratio: 0.0
+    sigma: 0.0
+    rot_num: 1
+    shuffle: True
+    batch_size: 1
+    return_pts: True
+    use_majority: True
+    hsv: False
+    normalise: False
+
+
+MODEL:
+  name: hrnet
+  channel: 3
+  nout: 31
+  depth: 6
+  factor: 2
+  signal_abs: True
+  stages: 3
+
+LOSS:
+  num_class: 31
+  momentum: 0.9
+  weight_decay: 0.0005
+  point_wise: True
+  class_weights: ./configs/loss_weights/class_weights.txt

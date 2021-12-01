@@ -1,0 +1,81 @@
+
+epoch: 30
+iteration: 0
+
+g_steps: 1
+d_steps: 1
+r_steps: 4
+
+disc_dim: 32
+gen_dim: 32
+style_dim: 128
+
+num_pairs: 32
+num_triplets: 64
+margin: 0.2
+patch_factor: 2
+stride_factor: 1
+
+save_iter: 1128
+log_iter: 564
+batch_size: 4
+model_module: runners.any_style.modelAEany_share_x_batchdiv
+lr: 0.00001
+kernel: 5
+dilation: True
+pooling: max
+clamp_num: 0.01
+optim: Adam
+with_norm: False
+norm_type: group_norm
+weight_init: True
+weight_decay: 0
+use_wc: True
+group_norm: False
+
+data_filename: model_filled.binvox
+style_filename: model_filled.binvox
+val_filename: model_filled.binvox
+datapath: /home/czavou01/decorgan-logs/splits/buildnet_buildings/buildnet_buildings_setA.txt
+stylepath: /home/czavou01/decorgan-logs/splits/buildnet_buildings/buildnet_buildings_setA.txt
+valpath: /home/czavou01/decorgan-logs/splits/buildnet_buildings/buildnet_buildings_setBC.txt
+data_cache_dir: /home/czavou01/decorgan-logs/data_cached_2
+style_cache_dir: /home/czavou01/decorgan-logs/data_cached_2
+val_cache_dir: /home/czavou01/decorgan-logs/data_cached_2
+style_dir: /home/czavou01/decorgan-logs/preprocessed_data/buildnet_buildings/normalizedObj
+data_dir: /home/czavou01/decorgan-logs/preprocessed_data/buildnet_buildings/normalizedObj
+val_dir: /home/czavou01/decorgan-logs/preprocessed_data/buildnet_buildings/normalizedObj
+
+checkpoint_dir: /mnt/beegfs/czavou01/decorgan-models/buildnet_buildings/any_style/any_share_3/i16o128/g32d32z128/batch4/triplets64pairs32margin0.2_wasserstein_weightinit/checkpoints
+sample_dir: /mnt/beegfs/czavou01/decorgan-models/buildnet_buildings/any_style/any_share_3/i16o128/g32d32z128/batch4/triplets64pairs32margin0.2_wasserstein_weightinit/samples
+export_dir: /mnt/beegfs/czavou01/decorgan-models/buildnet_buildings/any_style/any_share_3/i16o128/g32d32z128/batch4/triplets64pairs32margin0.2_wasserstein_weightinit/encodings
+test_fig_3_dir: /mnt/beegfs/czavou01/decorgan-models/buildnet_buildings/any_style/any_share_3/i16o128/g32d32z128/batch4/triplets64pairs32margin0.2_wasserstein_weightinit/test_fig_3
+style_codes_dir: /mnt/beegfs/czavou01/decorgan-models/buildnet_buildings/any_style/any_share_3/i16o128/g32d32z128/batch4/triplets64pairs32margin0.2_wasserstein_weightinit/style_codes
+
+input_size: 16
+output_size: 128
+
+asymmetry: True
+
+alpha: 1.
+beta: 10.0
+gamma: 1.
+delta: 1.
+
+train: True
+style_codes: False
+test_fig_3: False
+export: False
+debug: False
+
+prepvox: False
+prepvoxstyle: False
+evalvox: False
+prepimg: False
+prepimgreal: False
+evalimg: False
+prepFID: False
+prepFIDmodel: False
+prepFIDreal: False
+evalFID: False
+ui: False

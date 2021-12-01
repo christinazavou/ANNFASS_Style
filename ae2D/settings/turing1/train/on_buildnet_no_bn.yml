@@ -1,0 +1,14 @@
+logs: /mnt/beegfs/czavou01/2dae_results/train_on_buildnet/no_bn
+data_dir: /mnt/beegfs/czavou01/ANNFASS_DATA/BUILDNET_Buildings/groups_june17_renderings/materials_on_daylight
+train_txt: /mnt/beegfs/czavou01/2dae_train.txt
+val_txt: /mnt/beegfs/czavou01/2dae_val.txt
+test_csv: ""
+encodings_dir: ""
+mode: train
+batch_size: 16
+num_workers: 4
+z_dim: 16
+num_channels: 4
+batch_norm: False
+epochs: 300
+

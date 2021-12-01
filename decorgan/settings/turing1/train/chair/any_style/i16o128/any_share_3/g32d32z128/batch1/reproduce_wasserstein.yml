@@ -1,0 +1,80 @@
+
+epoch: 30
+iteration: 0
+
+g_steps: 1
+d_steps: 1
+r_steps: 4
+
+disc_dim: 32
+gen_dim: 32
+style_dim: 128
+
+num_pairs: 64
+num_triplets: 128
+margin: 0.2
+patch_factor: 2
+stride_factor: 1
+
+save_iter: 2259
+log_iter: 2259
+batch_size: 4
+model_module: runners.any_style.modelAEany_share_x_batchdiv
+lr: 0.00001
+kernel: 5
+dilation: True
+pooling: max
+clamp_num: 0.01
+optim: Adam
+with_norm: False
+norm_type: group_norm
+weight_init: False
+weight_decay: 0
+use_wc: True
+group_norm: False
+
+data_filename: model_depth_fusion.binvox
+style_filename: model_depth_fusion.binvox
+val_filename: model_depth_fusion.binvox
+datapath: /home/czavou01/decorgan-logs/splits/content_chair_train.txt
+stylepath: /home/czavou01/decorgan-logs/splits/content_chair_train.txt
+valpath: /home/czavou01/decorgan-logs/splits/chair/content_chair_test.txt
+data_cache_dir: /mnt/beegfs/czavou01/decorgan-logs/data_cached_2_i16o128
+style_cache_dir: /mnt/beegfs/czavou01/decorgan-logs/data_cached_2_i16o128
+style_dir: /home/czavou01/decorgan-logs/data/03001627
+data_dir: /home/czavou01/decorgan-logs/data/03001627
+val_dir: /home/czavou01/decorgan-logs/data/03001627
+
+checkpoint_dir: /mnt/beegfs/czavou01/decorgan-models/chair/any_style/any_share_3/i16o128/g32d32z128/batch1/triplets128pairs64margin0.2_wasserstein/checkpoints
+sample_dir: /mnt/beegfs/czavou01/decorgan-models/chair/any_style/any_share_3/i16o128/g32d32z128/batch1/triplets128pairs64margin0.2_wasserstein/samples_again
+export_dir: /mnt/beegfs/czavou01/decorgan-models/chair/any_style/any_share_3/i16o128/g32d32z128/batch1/triplets128pairs64margin0.2_wasserstein/encodings
+test_fig_3_dir: /mnt/beegfs/czavou01/decorgan-models/chair/any_style/any_share_3/i16o128/g32d32z128/batch1/triplets128pairs64margin0.2_wasserstein/test_fig_3
+style_codes_dir: /mnt/beegfs/czavou01/decorgan-models/chair/any_style/any_share_3/i16o128/g32d32z128/batch1/triplets128pairs64margin0.2_wasserstein/style_codes
+
+input_size: 16
+output_size: 128
+
+asymmetry: True
+
+alpha: 1.
+beta: 10.0
+gamma: 1.
+delta: 1.
+
+train: True
+style_codes: False
+test_fig_3: False
+export: False
+debug: False
+
+prepvox: False
+prepvoxstyle: False
+evalvox: False
+prepimg: False
+prepimgreal: False
+evalimg: False
+prepFID: False
+prepFIDmodel: False
+prepFIDreal: False
+evalFID: False
+ui: False

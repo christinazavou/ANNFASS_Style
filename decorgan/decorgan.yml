@@ -1,0 +1,33 @@
+name: decorgan
+channels:
+  - pytorch3d
+  - pytorch
+  - plotly
+  - iopath
+  - fvcore
+  - anaconda
+  - conda-forge
+  - defaults
+dependencies:
+  - cudatoolkit=10.1.243
+  - pillow=8.0.0
+  - pip=21.0.1
+  - python=3.6.13
+  - pytorch=1.6.0
+  - torchvision=0.7.0
+  - tqdm=4.60.0
+  - cython=0.29.21
+  - scipy=1.5.2
+  - scikit-learn=0.20.0
+  - matplotlib=3.2.2
+  - fvcore=0.1.5
+  - iopath=0.1.8
+  - pytorch3d=0.4.0=py36_cu101_pyt160
+  - plyfile=0.7.4
+  - pip:
+    - opencv-python==4.5.1.48
+    - protobuf==3.15.8
+    - tensorboardx==2.1
+    - open3d-python==0.7.0
+    - pymcubes==0.1.2
+

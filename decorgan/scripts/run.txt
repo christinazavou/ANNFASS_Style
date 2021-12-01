@@ -1,0 +1,112 @@
+note on retain_graph=True:
+https://stackoverflow.com/questions/46774641/what-does-the-parameter-retain-graph-mean-in-the-variables-backward-method#:~:text=In%20order%20to%20backprop%20the,the%20first%20back%2Dpropagated%20loss.
+
+note on batch size > 1:
+https://kozodoi.me/python/deep%20learning/pytorch/tutorial/2021/02/19/gradient-accumulation.html
+https://towardsdatascience.com/gradient-accumulation-overcoming-memory-constraints-in-deep-learning-36d411252d01
+
+note on numpy boolean bits:
+https://stackoverflow.com/questions/5602155/numpy-boolean-array-with-1-bit-entries
+
+for multi gpu:
+https://pytorch.org/tutorials/beginner/blitz/data_parallel_tutorial.html
+
+
+train/chair/adain_i32o256_g32d32.yml : can't run due to memory issues
+
+
+to adain_share doulepse .. opotan na to elekso mipos einai kalitero apo to allo adain
+
+
+na kano MODEL_AE_ONE_TRAIN_DATASET na exei gia train style_set = dset alla oxi gia test
+
+
+
+make run-on-turing MAIN_FILE=mymain JOB_NAME=ChAnyB5 SPECIFIC_NODE_ARG="-w gpu-0-2 --mem-per-cpu=90000 " GPU=1 CONFIG=train/chair/any_style/i16o128/any_share_3_batch32_abg05
+make run-on-turing MAIN_FILE=mymain JOB_NAME=CarAnyB5 SPECIFIC_NODE_ARG="-w gpu-0-0 --mem-per-cpu=90000 " GPU=2 CONFIG=train/car/any_style/i16o128N32/any_share_3_batch32_abg05
+
+
+na sinexiso to training gia ta rotation?
+na valo adain for any style me rotation?
+na valo adain all layers me batch?
+na valo car me batch
+na valo car me rotation (na ta kano preprocess prota)
+na valo chair me rotation kai batch
+
+
+make run-on-turing MAIN_FILE=mymain JOB_NAME=Sty32Rot SPECIFIC_NODE_ARG="-w gpu-0-2 --mem-per-cpu=90000 " GPU=1 CONFIG=train/chair/style_encoder/i16o128/g32d32z8/b32_rot
+make run-on-turing MAIN_FILE=mymain JOB_NAME=Any1BaRo64 SPECIFIC_NODE_ARG="-w gpu-0-1 --mem-per-cpu=90000 " GPU=0 CONFIG=train/chair/any_style/i16o128/any_share_1/g32d32z64/m0.2batch32_a0.5b10g1.5d1.5_many_rot
+make run-on-turing MAIN_FILE=mymain JOB_NAME=Any4BaRo32 SPECIFIC_NODE_ARG="-w gpu-0-0 --mem-per-cpu=90000 " GPU=3 CONFIG=train/chair/any_style/i16o128/any_share_4/g32d32z32/m0.2batch32_a0.5b10g1.5d1.5_many_rot
+make run-on-turing MAIN_FILE=mymain JOB_NAME=AnyBaRo64 SPECIFIC_NODE_ARG="-w gpu-0-0 --mem-per-cpu=90000 " GPU=2 CONFIG=train/chair/any_style/i16o128/any_share_3/g32d32z64/m0.2batch32_a0.5b10g1.5d1.5_many_rot
+make run-on-turing MAIN_FILE=mymain JOB_NAME=AnyBaRo128 SPECIFIC_NODE_ARG="-w gpu-0-0 --mem-per-cpu=90000 " GPU=1 CONFIG=train/chair/any_style/i16o128/any_share_3/g32d32z128/m0.2batch32_a0.5b10g1.5d1.5_many_rot
+
+make run-on-turing MAIN_FILE=mymain JOB_NAME=EvAdaCar SPECIFIC_NODE_ARG="-w gpu-0-0 --mem-per-cpu=90000 " GPU=0 CONFIG=eval/car/adain/i16o128N32/g32d32_a02_layers_fid
+make run-on-turing MAIN_FILE=mymain JOB_NAME=EvOriBui SPECIFIC_NODE_ARG="-w gpu-0-0 --mem-per-cpu=90000 " GPU=1 CONFIG=eval/building/original/i16o128N32/g32d32z8_fid
+make run-on-turing MAIN_FILE=mymain JOB_NAME=EvAdaBui SPECIFIC_NODE_ARG="-w gpu-0-0 --mem-per-cpu=90000 " GPU=2 CONFIG=eval/building/adain/i16o128N32/g32d32_fid
+make run-on-turing MAIN_FILE=mymain JOB_NAME=EvStyBui SPECIFIC_NODE_ARG="-w gpu-0-0 --mem-per-cpu=90000 " GPU=3 CONFIG=eval/building/style_encoder/i16o128N32/g32d32z8_fid
+
+make run-on-turing MAIN_FILE=mymain JOB_NAME=OrChNoYu SPECIFIC_NODE_ARG="-w gpu-0-0 --mem-per-cpu=90000 " GPU=0 CONFIG=train/chair/original/i16o128N64noyu/g32d32z8
+make run-on-turing MAIN_FILE=mymain JOB_NAME=AdChNoYu SPECIFIC_NODE_ARG="-w gpu-0-0 --mem-per-cpu=90000 " GPU=1 CONFIG=train/chair/adain/i16o128N64noyu/g32d32
+
+make run-on-turing MAIN_FILE=mymain JOB_NAME=OrCax4 SPECIFIC_NODE_ARG="-w gpu-0-0 --mem-per-cpu=90000 " GPU=0 CONFIG=train/car/original/i64o256N32noyu/g32d32z8_a02
+make run-on-turing MAIN_FILE=mymain JOB_NAME=StCax4 SPECIFIC_NODE_ARG="-w gpu-0-0 --mem-per-cpu=90000 " GPU=2 CONFIG=train/car/style_encoder/i64o256N32noyu/g32d32z8_a02
+
+make run-on-turing MAIN_FILE=mymain JOB_NAME=Any3Lr5 SPECIFIC_NODE_ARG="-w gpu-0-1 --mem-per-cpu=90000 " GPU=2 CONFIG=train/chair/any_style/i16o128/any_share_3/g32d32z128/lr1e5
+
+
+make run-on-turing MAIN_FILE=mymain JOB_NAME=AnyNoise SPECIFIC_NODE_ARG="-w gpu-0-1 --mem-per-cpu=90000 " GPU=0 CONFIG=train/chair/any_style/i16o128/any_share_3/g32d32z128/rndnoise_batch4
+make run-on-turing MAIN_FILE=mymain JOB_NAME=AnyotNoise SPECIFIC_NODE_ARG="-w gpu-0-1 --mem-per-cpu=90000 " GPU=1 CONFIG=train/chair/any_style/i16o128/any_share_3/g32d32z128/rndnoise_batch4_rot
+make run-on-turing MAIN_FILE=mymain JOB_NAME=AnRBLG64 SPECIFIC_NODE_ARG="-w gpu-0-0 --mem-per-cpu=90000 " GPU=1 CONFIG=train/chair/any_style/i64o256/any_share_3/g32d32z128/rndnoise_batch4_lr1e5_g4
+
+sgd failed.
+
+make run-on-turing MAIN_FILE=mymain JOB_NAME=Any64 SPECIFIC_NODE_ARG="-w gpu-0-2 --mem-per-cpu=90000 " GPU=1 CONFIG=train/chair/any_style/i64o256/any_share_3/g32d32z128/rndnoise_batch32_lr5e5
+
+
+na valo original me batch size gia cars / buildings (mipos ekei to performance exei pio constant changes)
+
+make run-on-turing MAIN_FILE=mymain JOB_NAME=OrBuB4 SPECIFIC_NODE_ARG="-w gpu-0-0 --mem-per-cpu=90000 " GPU=1 CONFIG=train/buildnet_building/original/i16o128N32/g32d32z8batch4
+
+na valo adain me batch 4 afou me 32 den fainetai kalo
+na valo style encoder me rotation same angle ?
+na valo original i style encoder me rand noise kai batch 4 (kai rot)
+
+
+to check:
+make run-on-turing MAIN_FILE=mymain JOB_NAME=AnyWc SPECIFIC_NODE_ARG="-w gpu-0-2 --mem-per-cpu=90000 " GPU=2 CONFIG=train/chair/any_style/i16o128/any_share_3/g32d32z128/rndnoise_batch4_gnorm_wc XALIA.NO GEN
+make run-on-turing MAIN_FILE=mymain JOB_NAME=Any3Gn SPECIFIC_NODE_ARG="-w gpu-0-0 --mem-per-cpu=90000 " GPU=2 CONFIG=train/chair/any_style/i16o128/any_share_3/g32d32z128/gn XALIA. NO GEN
+make run-on-turing MAIN_FILE=mymain JOB_NAME=AdbCax4 SPECIFIC_NODE_ARG="-w gpu-0-0 --mem-per-cpu=90000 " GPU=3 CONFIG=train/car/adain/i64o256N32noyu/g32d32_a02_batch16
+make run-on-turing MAIN_FILE=mymain JOB_NAME=AnyBRGn SPECIFIC_NODE_ARG="-w gpu-0-2 --mem-per-cpu=90000 " GPU=0 CONFIG=train/chair/any_style/i16o128/any_share_3/g32d32z128/m0.2batch4_a0.5b10g1.5d1.5_rot_gnorm XALIA. NO GEN
+make run-on-turing MAIN_FILE=mymain JOB_NAME=AnRBLG SPECIFIC_NODE_ARG="-w gpu-0-0 --mem-per-cpu=90000 " GPU=0 CONFIG=train/chair/any_style/i16o128/any_share_3/g32d32z128/rndnoise_batch4_lr1e5_g4 NOT ENTIRELY MODE COLLAPSE
+make run-on-turing MAIN_FILE=mymain JOB_NAME=OrCaB4 SPECIFIC_NODE_ARG="-w gpu-0-0 --mem-per-cpu=90000 " GPU=0 CONFIG=train/car/original/i64o256N32noyu/g32d32z8_a02_batch4
+make run-on-turing MAIN_FILE=mymain JOB_NAME=StyB4GN SPECIFIC_NODE_ARG="-w gpu-0-1 --mem-per-cpu=90000 " GPU=0 CONFIG=train/chair/style_encoder/i16o128/g32d32z128/batch4_group_norm
+make run-on-turing MAIN_FILE=mymain JOB_NAME=Any1WI SPECIFIC_NODE_ARG="-w gpu-0-2 --mem-per-cpu=90000 " GPU=2 CONFIG=train/chair/any_style/i16o128/any_share_1/g32d32z64/lr5e5m0.2batch4_a1b3g1d1_weightinit
+make run-on-turing MAIN_FILE=mymain JOB_NAME=StZ128WI SPECIFIC_NODE_ARG="-w gpu-0-1 --mem-per-cpu=90000 " GPU=2 CONFIG=train/chair/style_encoder/i16o128/g32d32z128/batch4_weightinit
+
+
+to run:
+make run-on-turing MAIN_FILE=mymain JOB_NAME=StB4WCWi SPECIFIC_NODE_ARG="-w gpu-0-2 --mem-per-cpu=90000 " GPU=3 CONFIG=train/chair/style_encoder/i16o128/g32d32z128/batch4/wasserstein_weightinit
+make run-on-turing MAIN_FILE=mymain JOB_NAME=StB4WCWi SPECIFIC_NODE_ARG="-w gpu-0-2 --mem-per-cpu=90000 " GPU=3 CONFIG=train/chair/style_encoder/i16o128/g32d32z128/batch4/wasserstein_weightinit
+make run-on-turing MAIN_FILE=dataset_rot JOB_NAME=RotSame SPECIFIC_NODE_ARG="-w gpu-0-1 --mem-per-cpu=90000 " GPU=3 CONFIG=cache_data/shapenet_chair/i16o128/rot_same
+
+make run-on-turing MAIN_FILE=mymain JOB_NAME=AnRSb1wi SPECIFIC_NODE_ARG="-w gpu-0-0 --mem-per-cpu=90000 " GPU=0 CONFIG=train/chair/any_style/i16o128/any_share_3/g32d32z128/batch1/rot_same_weightinit
+make run-on-turing MAIN_FILE=mymain JOB_NAME=AnRSb4wi SPECIFIC_NODE_ARG="-w gpu-0-0 --mem-per-cpu=90000 " GPU=1 CONFIG=train/chair/any_style/i16o128/any_share_3/g32d32z128/batch4/rot_same_weightinit
+
+
+
+to check:
+make run-on-turing MAIN_FILE=mymain JOB_NAME=AnB4GnWid SPECIFIC_NODE_ARG="-w gpu-0-2 --mem-per-cpu=90000 " GPU=2 CONFIG=train/chair/any_style/i16o128/any_share_3/g32d32z128/batch4/groupnorm_wi_wd MOU FAINETAI MODE COLLAPSE
+make run-on-turing MAIN_FILE=mymain JOB_NAME=AnB1GnWi SPECIFIC_NODE_ARG="-w gpu-0-2 --mem-per-cpu=90000 " GPU=1 CONFIG=train/chair/any_style/i16o128/any_share_3/g32d32z128/batch1/groupnorm_wi MOU FAINETAI MODE COLLAPSE
+make run-on-turing MAIN_FILE=mymain JOB_NAME=RepB1 SPECIFIC_NODE_ARG="-w gpu-0-1 --mem-per-cpu=90000 " GPU=1 CONFIG=train/chair/any_style/i16o128/any_share_3/g32d32z128/batch1/reproduce OK
+make run-on-turing MAIN_FILE=mymain JOB_NAME=RepB4 SPECIFIC_NODE_ARG="-w gpu-0-1 --mem-per-cpu=90000 " GPU=3 CONFIG=train/chair/any_style/i16o128/any_share_3/g32d32z128/batch4/reproduce OK
+make run-on-turing MAIN_FILE=mymain JOB_NAME=RepB1WC SPECIFIC_NODE_ARG="-w gpu-0-0 --mem-per-cpu=90000 " GPU=1 CONFIG=train/chair/any_style/i16o128/any_share_3/g32d32z128/batch4/reproduce_wasserstein SO AND SO (etrexe dio fores tautoxrona)
+make run-on-turing MAIN_FILE=mymain JOB_NAME=RepB4WC SPECIFIC_NODE_ARG="-w gpu-0-0 --mem-per-cpu=90000 " GPU=3 CONFIG=train/chair/any_style/i16o128/any_share_3/g32d32z128/batch4/reproduce_wasserstein (dupl)
+make run-on-turing MAIN_FILE=mymain JOB_NAME=RepB1WI SPECIFIC_NODE_ARG="-w gpu-0-3 --mem-per-cpu=90000 " GPU=0 CONFIG=train/chair/any_style/i16o128/any_share_3/g32d32z128/batch4/reproduce_weightinit QUITE GOOD (etrexe dio fores tautoxrona KAI EIXE ALLA LOSSES)
+make run-on-turing MAIN_FILE=mymain JOB_NAME=RepB4WI SPECIFIC_NODE_ARG="-w gpu-0-3 --mem-per-cpu=90000 " GPU=1 CONFIG=train/chair/any_style/i16o128/any_share_3/g32d32z128/batch4/reproduce_weightinit (dupl)
+make run-on-turing MAIN_FILE=mymain JOB_NAME=AnB1RS SPECIFIC_NODE_ARG="-w gpu-0-1 --mem-per-cpu=90000 " GPU=0 CONFIG=train/chair/any_style/i16o128/any_share_3/g32d32z128/batch1/rot_same NOT BAD. INTERESTING (to visualization exei bug) TA LOSSES OMOS KATALIGOUN KAKA
+make run-on-turing MAIN_FILE=mymain JOB_NAME=AnB4RS SPECIFIC_NODE_ARG="-w gpu-0-1 --mem-per-cpu=90000 " GPU=1 CONFIG=train/chair/any_style/i16o128/any_share_3/g32d32z128/batch4/rot_same INTERESTING...BUT NOT SMOOTH LOSSES...
+make run-on-turing MAIN_FILE=mymain JOB_NAME=BAW SPECIFIC_NODE_ARG="-w gpu-0-0 --mem-per-cpu=90000 " GPU=0 CONFIG=train/buildnet_building/any_style/any_share_3/i16o128/g32d32z128/batch4/wasserstein
+make run-on-turing MAIN_FILE=mymain JOB_NAME=BAWWI SPECIFIC_NODE_ARG="-w gpu-0-0 --mem-per-cpu=90000 " GPU=1 CONFIG=train/buildnet_building/any_style/any_share_3/i16o128/g32d32z128/batch4/wasserstein_weightinit
+make run-on-turing MAIN_FILE=mymain JOB_NAME=BAWI SPECIFIC_NODE_ARG="-w gpu-0-0 --mem-per-cpu=90000 " GPU=2 CONFIG=train/buildnet_building/any_style/any_share_3/i16o128/g32d32z128/batch4/weightinit
+make run-on-turing MAIN_FILE=mymain JOB_NAME=StB1GN SPECIFIC_NODE_ARG="-w gpu-0-1 --mem-per-cpu=90000 " GPU=2 CONFIG=train/chair/style_encoder/i16o128/g32d32z128/batch1/groupnorm
+make run-on-turing MAIN_FILE=mymain JOB_NAME=StB4GN SPECIFIC_NODE_ARG="-w gpu-0-2 --mem-per-cpu=90000 " GPU=0 CONFIG=train/chair/style_encoder/i16o128/g32d32z128/batch4/groupnorm

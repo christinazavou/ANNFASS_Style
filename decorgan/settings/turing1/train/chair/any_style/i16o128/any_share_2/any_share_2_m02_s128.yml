@@ -1,0 +1,64 @@
+
+epoch: 50
+iteration: 0
+
+g_steps: 1
+d_steps: 1
+r_steps: 4
+
+disc_dim: 32
+gen_dim: 32
+style_dim: 128
+
+save_iter: 1000
+log_iter: 500
+model_module: runners.modelAEany_share_2
+recon_loss: MSE
+lr: 0.0001
+margin: 0.2
+kernel: 5
+dilation: True
+pooling: max
+
+data_filename: model_depth_fusion.binvox
+style_filename: model_depth_fusion.binvox
+datapath: /home/czavou01/decorgan-logs/splits/content_chair_train.txt
+stylepath: /home/czavou01/decorgan-logs/splits/content_chair_train.txt
+data_cache_dir: /home/czavou01/decorgan-logs/data_cached_2
+style_cache_dir: /home/czavou01/decorgan-logs/data_cached_2
+style_dir: /home/czavou01/decorgan-logs/data/03001627
+data_dir: /home/czavou01/decorgan-logs/data/03001627
+
+checkpoint_dir: /home/czavou01/decorgan-models/chair/any_share_2_m02_s128/checkpoints
+sample_dir: /home/czavou01/decorgan-models/chair/any_share_2_m02_s128/samples_again
+export_dir: /home/czavou01/decorgan-models/chair/any_share_2_m02_s128/encodings
+test_fig_3_dir: /home/czavou01/decorgan-models/chair/any_share_2_m02_s128/test_fig_3
+style_codes_dir: /home/czavou01/decorgan-models/chair/any_share_2_m02_s128/style_codes
+
+input_size: 16
+output_size: 128
+
+asymmetry: True
+
+alpha: 1.
+beta: 10.0
+gamma: 1.
+delta: 1.
+
+train: True
+style_codes: False
+test_fig_3: False
+export: False
+debug: False
+
+prepvox: False
+prepvoxstyle: False
+evalvox: False
+prepimg: False
+prepimgreal: False
+evalimg: False
+prepFID: False
+prepFIDmodel: False
+prepFIDreal: False
+evalFID: False
+ui: False

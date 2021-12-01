@@ -1,0 +1,73 @@
+
+epoch: 25
+iteration: 0
+
+g_steps: 1
+d_steps: 1
+r_steps: 4
+
+disc_dim: 32
+gen_dim: 32
+style_dim: 128
+
+batch_size: 4
+
+num_pairs: 64
+num_triplets: 64
+
+save_iter: 2259
+log_iter: 564
+model_module: runners.any_style.modelAEany_share_x_batchdiv_randomnoise
+recon_loss: MSE
+lr: 0.0001
+margin: 0.2
+kernel: 5
+dilation: True
+pooling: max
+
+data_filename: model_depth_fusion.binvox
+style_filename: model_depth_fusion.binvox
+val_filename: model_depth_fusion.binvox
+datapath: /home/czavou01/decorgan-logs/splits/content_chair_train.txt
+stylepath: /home/czavou01/decorgan-logs/splits/content_chair_train.txt
+valpath: /home/czavou01/decorgan-logs/splits/chair/content_chair_test.txt
+data_cache_dir: /mnt/beegfs/czavou01/decorgan-logs/data_cached_i16o128_rndnoise
+style_cache_dir: /mnt/beegfs/czavou01/decorgan-logs/data_cached_i16o128_rndnoise
+val_cache_dir: /mnt/beegfs/czavou01/decorgan-logs/data_cached_i16o128_rndnoise
+style_dir: /home/czavou01/decorgan-logs/data/03001627
+data_dir: /home/czavou01/decorgan-logs/data/03001627
+val_dir: /home/czavou01/decorgan-logs/data/03001627
+
+checkpoint_dir: /mnt/beegfs/czavou01/decorgan-models/chair/any_style/any_share_3/i16o128/g32d32z128/rndnoise_batch4/checkpoints
+sample_dir: /mnt/beegfs/czavou01/decorgan-models/chair/any_style/any_share_3/i16o128/g32d32z128/rndnoise_batch4/samples_again
+export_dir: /mnt/beegfs/czavou01/decorgan-models/chair/any_style/any_share_3/i16o128/g32d32z128/rndnoise_batch4/encodings
+test_fig_3_dir: /mnt/beegfs/czavou01/decorgan-models/chair/any_style/any_share_3/i16o128/g32d32z128/rndnoise_batch4/test_fig_3
+style_codes_dir: /mnt/beegfs/czavou01/decorgan-models/chair/any_style/any_share_3/i16o128/g32d32z128/rndnoise_batch4/style_codes
+
+input_size: 16
+output_size: 128
+
+asymmetry: True
+
+alpha: 1.
+beta: 10.0
+gamma: 1.
+delta: 1.
+
+train: True
+style_codes: False
+test_fig_3: False
+export: False
+debug: False
+
+prepvox: False
+prepvoxstyle: False
+evalvox: False
+prepimg: False
+prepimgreal: False
+evalimg: False
+prepFID: False
+prepFIDmodel: False
+prepFIDreal: False
+evalFID: False
+ui: False

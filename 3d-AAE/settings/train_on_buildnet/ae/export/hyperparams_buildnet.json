@@ -1,0 +1,78 @@
+{
+    "experiment_name": "experiment_ae",
+    "results_root": "/media/graphicslab/BigData/zavou/ANNFASS_CODE/3daae-results/buildnet/gypsum",
+    "clean_results_dir": false,
+
+    "cuda": true,
+    "gpu": 0,
+
+    "reconstruction_loss": "chamfer",
+
+    "metrics": [
+    ],
+
+    "encodings_suffix": "",
+
+    "dataset": "BuildnetComponentDataset",
+    "data_dir": "/media/graphicslab/BigData/zavou/ANNFASS_CODE/style_detection/logs/buildnet_splits_content_style/style",
+    "test_dataset": {
+        "classes": [],
+        "shuffle": true,
+        "transforms": ["rotate"],
+        "n_points": 2048,
+        "split": "test"
+    },
+
+    "num_workers": 0,
+    "max_epochs": 2000,
+    "batch_size": 4,
+    "gp_lambda": 10,
+    "reconstruction_coef": 0.05,
+    "distribution": "bernoulli",
+
+    "p": 0.2,
+    "z_beta_a": 0.01,
+    "z_beta_b": 0.01,
+
+    "normal_mu": 0.0,
+    "normal_std": 0.2,
+
+    "seed": 2018,
+    "save_frequency": 1,
+    "stat_frequency": 1,
+    "epsilon": 0.001,
+
+    "arch": "autoencoder",
+    "z_size": 2048,
+    "model": {
+        "G": {
+            "use_bias": true,
+            "relu_slope": 0.2
+        },
+        "E": {
+            "use_bias": true,
+            "relu_slope": 0.2
+        }
+
+    },
+    "optimizer": {
+        "D": {
+            "type": "Adam",
+            "hyperparams": {
+                "lr": 0.0005,
+                "weight_decay": 0,
+                "betas": [0.9, 0.999],
+                "amsgrad": false
+            }
+        },
+        "EG": {
+            "type": "Adam",
+            "hyperparams": {
+                "lr": 0.0005,
+                "weight_decay": 0,
+                "betas": [0.9, 0.999],
+                "amsgrad": false
+            }
+        }
+    }
+}

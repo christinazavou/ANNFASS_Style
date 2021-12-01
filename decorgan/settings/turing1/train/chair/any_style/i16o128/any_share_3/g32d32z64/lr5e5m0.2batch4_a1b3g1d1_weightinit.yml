@@ -1,0 +1,77 @@
+
+epoch: 20
+iteration: 0
+
+g_steps: 1
+d_steps: 1
+r_steps: 4
+
+gen_dim: 32
+disc_dim: 32
+style_dim: 64
+
+stride_factor: 2
+num_triplets: 64
+num_pairs: 32
+
+
+save_iter: 564
+log_iter: 564
+model_module: runners.any_style.modelAEany_share_x_batchdiv
+batch_size: 4
+with_norm: False
+norm_type: group_norm
+recon_loss: MSE
+lr: 0.00005
+margin: 0.2
+kernel: 5
+dilation: True
+pooling: max
+weight_init: True
+
+data_filename: model_depth_fusion.binvox
+style_filename: model_depth_fusion.binvox
+val_filename: model_depth_fusion.binvox
+datapath: /home/czavou01/decorgan-logs/splits/content_chair_train.txt
+stylepath: /home/czavou01/decorgan-logs/splits/style_chair_64.txt
+valpath: /home/czavou01/decorgan-logs/splits/chair/content_chair_test.txt
+data_cache_dir: /mnt/beegfs/czavou01/decorgan-logs/data_cached_2_i16o128
+style_cache_dir: /mnt/beegfs/czavou01/decorgan-logs/data_cached_2_i16o128
+val_cache_dir: /mnt/beegfs/czavou01/decorgan-logs/data_cached_2_i16o128
+style_dir: /home/czavou01/decorgan-logs/data/03001627
+data_dir: /home/czavou01/decorgan-logs/data/03001627
+val_dir: /home/czavou01/decorgan-logs/data/03001627
+
+checkpoint_dir: /mnt/beegfs/czavou01/decorgan-models/chair/i26o128/any_share_3/g32d32z64/lr5e5m0.2batch4_a1b3g1d1_weightinit/checkpoints
+sample_dir: /mnt/beegfs/czavou01/decorgan-models/chair/i26o128/any_share_3/g32d32z64/lr5e5m0.2batch4_a1b3g1d1_weightinit/samples_again
+export_dir: /mnt/beegfs/czavou01/decorgan-models/chair/i26o128/any_share_3/g32d32z64/lr5e5m0.2batch4_a1b3g1d1_weightinit/encodings
+test_fig_3_dir: /mnt/beegfs/czavou01/decorgan-models/chair/i26o128/any_share_3/g32d32z64/lr5e5m0.2batch4_a1b3g1d1_weightinit/test_fig_3
+style_codes_dir: /mnt/beegfs/czavou01/decorgan-models/chair/i26o128/any_share_3/g32d32z64/lr5e5m0.2batch4_a1b3g1d1_weightinit/style_codes
+
+input_size: 16
+output_size: 128
+
+asymmetry: True
+
+alpha: 1
+beta: 3
+gamma: 1
+delta: 1
+
+train: True
+style_codes: False
+test_fig_3: False
+export: False
+debug: False
+
+prepvox: False
+prepvoxstyle: False
+evalvox: False
+prepimg: False
+prepimgreal: False
+evalimg: False
+prepFID: False
+prepFIDmodel: False
+prepFIDreal: False
+evalFID: False
+ui: False

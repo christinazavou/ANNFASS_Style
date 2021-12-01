@@ -1,0 +1,14 @@
+logs: /media/graphicslab/BigData1/zavou/ANNFASS_CODE/2dae_results/train_on_buildnet
+data_dir: /media/graphicslab/BigData1/zavou/ANNFASS_DATA/BUILDNET_Buildings/groups_june17_renderings/materials_on_daylight
+train_txt: /media/graphicslab/BigData1/zavou/ANNFASS_CODE/style_detection/logs_final/unlabeled_data/setA_train_val_test/renderings/BUILDNET_Buildings_materials_on_daylight/unique/columndomedoorwindowtower/split_train_val_test/train.txt
+val_txt: /media/graphicslab/BigData1/zavou/ANNFASS_CODE/style_detection/logs_final/unlabeled_data/setA_train_val_test/renderings/BUILDNET_Buildings_materials_on_daylight/unique/columndomedoorwindowtower/split_train_val_test/val.txt
+test_csv: ""
+encodings_dir: ""
+mode: train
+batch_size: 2
+num_workers: 0
+z_dim: 4
+num_channels: 4
+batch_norm: False
+epochs: 300
+

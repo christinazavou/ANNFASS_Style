@@ -1,0 +1,68 @@
+
+epoch: 20
+iteration: 0
+
+g_steps: 1
+d_steps: 1
+r_steps: 4
+
+gen_dim: 32
+disc_dim: 32
+style_dim: 128
+
+batch_size: 1
+
+save_iter: 1000
+log_iter: 500
+model_module: runners.original.modelAE_batchdiv_and_eval
+recon_loss: MSE
+lr: 0.0001
+kernel: 5
+dilation: True
+pooling: max
+
+data_filename: model_filled.binvox
+style_filename: model_depth_fusion.binvox
+val_filename: model_depth_fusion.binvox
+datapath: /media/graphicslab/BigData1/zavou/ANNFASS_CODE/decorgan-logs/HU_YU_LUN_BUILDNET/splits/furniture_hu_norm_and_align/export.txt
+stylepath: /media/graphicslab/BigData1/zavou/ANNFASS_CODE/decorgan-logs/splits/chair/style_chair_64.txt
+valpath: /media/graphicslab/BigData1/zavou/ANNFASS_CODE/decorgan-logs/splits/chair/content_chair_test.txt
+data_cache_dir:
+style_cache_dir:
+val_cache_dir:
+style_dir: /media/graphicslab/BigData1/zavou/ANNFASS_CODE/decorgan-logs/data/03001627
+data_dir: /media/graphicslab/BigData1/zavou/ANNFASS_CODE/decorgan-logs/HU_YU_LUN_BUILDNET/preprocessed_data/furniture_hu_norm_and_align
+val_dir: /media/graphicslab/BigData1/zavou/ANNFASS_CODE/decorgan-logs/data/03001627
+style_indices: "6, 17, 21, 22, 25, 27, 3, 15, 20"
+
+checkpoint_dir: /media/graphicslab/BigData1/zavou/ANNFASS_CODE/decorgan_results/from_turing/trained_on_chairs/original/i16o128/g32d32z128/checkpoints
+sample_dir: /media/graphicslab/BigData1/zavou/ANNFASS_CODE/decorgan_results/from_turing/trained_on_chairs/original/i16o128/g32d32z128/samples
+export_dir: /media/graphicslab/BigData1/zavou/ANNFASS_CODE/decorgan_results/from_turing/trained_on_chairs/original/i16o128/g32d32z128/encodings_furniture_hu_norm_and_align
+test_fig_3_dir: /media/graphicslab/BigData1/zavou/ANNFASS_CODE/decorgan_results/from_turing/trained_on_chairs/original/i16o128/g32d32z128/test_fig_3
+style_codes_dir: /media/graphicslab/BigData1/zavou/ANNFASS_CODE/decorgan_results/from_turing/trained_on_chairs/original/i16o128/g32d32z128/style_codes
+
+input_size: 16
+output_size: 128
+
+asymmetry: True
+
+alpha: 0.5
+beta: 10.0
+
+train: False
+style_codes: False
+test_fig_3: False
+export: True
+debug: False
+
+prepvox: False
+prepvoxstyle: False
+evalvox: False
+prepimg: False
+prepimgreal: False
+evalimg: False
+prepFID: False
+prepFIDmodel: False
+prepFIDreal: False
+evalFID: False
+ui: False

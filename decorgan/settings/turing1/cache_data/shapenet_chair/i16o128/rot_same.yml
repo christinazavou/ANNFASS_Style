@@ -1,0 +1,11 @@
+
+data_dir: /mnt/beegfs/czavou01/decorgan-logs/preprocessed_data/03001627_train_objs_norm_and_specific_rot
+file_path: /home/czavou01/decorgan-logs/splits/chair/content_chair_train.txt
+cache_dir: /mnt/beegfs/czavou01/decorgan-logs/data_cached_rot_same/i16o128
+log_dir: /mnt/beegfs/czavou01/decorgan-logs/data_cached_rot_same/i16o128
+filename: model_filled.binvox
+
+input_size: 16
+output_size: 128
+
+asymmetry: True

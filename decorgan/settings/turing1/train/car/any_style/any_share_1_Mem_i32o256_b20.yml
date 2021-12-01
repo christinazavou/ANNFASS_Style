@@ -1,0 +1,68 @@
+
+epoch: 20
+iteration: 0
+
+g_steps: 1
+d_steps: 1
+r_steps: 4
+
+patch_num: 1
+patch_factor: 1
+stride_factor: 1
+
+gen_dim: 16
+disc_dim: 16
+style_dim: 64
+
+save_iter: 2000
+log_iter: 500
+model_module: runners.modelAEany_share_1_Mem
+recon_loss: MSE
+lr: 0.0001
+margin: 0.2
+kernel: 5
+dilation: True
+pooling: max
+
+data_filename: model_depth_fusion.binvox
+style_filename: model_depth_fusion.binvox
+datapath: /home/czavou01/decorgan-logs/splits/content_car_train_2K.txt
+stylepath: /home/czavou01/decorgan-logs/splits/content_car_train_2K.txt
+data_cache_dir: /home/czavou01/decorgan-logs/data_cached_2_in32_out256
+style_cache_dir: /home/czavou01/decorgan-logs/data_cached_2_in32_out256
+style_dir: /home/czavou01/decorgan-logs/data/02958343
+data_dir: /home/czavou01/decorgan-logs/data/02958343
+
+checkpoint_dir: /home/czavou01/decorgan-models/cars/any_share_1_Mem/i32o256/checkpoints
+sample_dir: /home/czavou01/decorgan-models/cars/any_share_1_Mem/i32o256/samples
+export_dir: /home/czavou01/decorgan-models/cars/any_share_1_Mem/i32o256/encodings
+test_fig_3_dir: /home/czavou01/decorgan-models/cars/any_share_1_Mem/i32o256/test_fig_3
+style_codes_dir: /home/czavou01/decorgan-models/cars/any_share_1_Mem/i32o256/style_codes
+
+input_size: 32
+output_size: 256
+
+asymmetry: True
+
+alpha: 1.
+beta: 20.0
+gamma: 1.
+delta: 1.
+
+train: True
+style_codes: False
+test_fig_3: False
+export: False
+debug: False
+
+prepvox: False
+prepvoxstyle: False
+evalvox: False
+prepimg: False
+prepimgreal: False
+evalimg: False
+prepFID: False
+prepFIDmodel: False
+prepFIDreal: False
+evalFID: False
+ui: False

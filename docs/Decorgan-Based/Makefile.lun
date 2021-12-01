@@ -1,0 +1,95 @@
+
+#lun_furniture_encodings_dir ?= /media/graphicslab/BigData1/zavou/ANNFASS_CODE/decorgan_results/from_turing/sep9/trained_on_chairs/original_clean/s8/encodings_furniture_lun
+#lun_furniture_model ?= decorgan_original
+#lun_furniture_model_yml ?= original_s8
+#lun_furniture_encodings_dir ?= /media/graphicslab/BigData1/zavou/ANNFASS_CODE/decorgan_results/from_turing/sep9/trained_on_chairs/original_clean/s32_i32o256/encodings_furniture_lun
+#lun_furniture_model ?= decorgan_original_i32o256_s32
+#lun_furniture_model_yml ?= original_i32o256_s32
+#lun_furniture_encodings_dir ?= /media/graphicslab/BigData1/zavou/ANNFASS_CODE/decorgan_results/from_turing/sep9/trained_on_chairs/ajd_flexdp2/in16_out128/encodings_furniture_lun
+#lun_furniture_model ?= decorgan_adj_flexdp2_in16_out128
+#lun_furniture_model_yml ?= adj_flexdp2_in16_out128
+#lun_furniture_encodings_dir ?= /media/graphicslab/BigData1/zavou/ANNFASS_CODE/decorgan_results/from_turing/sep9/trained_on_chairs/ajd_flexdp2/in32_out256/encodings_furniture_lun
+#lun_furniture_model ?= decorgan_adj_flexdp2_in32_out256
+#lun_furniture_model_yml ?= adj_flexdp2_in32_out256
+lun_furniture_encodings_dir ?= /media/graphicslab/BigData1/zavou/ANNFASS_CODE/decorgan_results/from_turing/sep9/trained_on_chairs/adain_dp2_in16_out128/g32d32/encodings_furniture_lun
+lun_furniture_model ?= decorgan_adain_p2_in16_out128_g32d32
+lun_furniture_model_yml ?= adain_p2_in16_out128_g32d32
+#lun_furniture_encodings_dir ?= /media/graphicslab/BigData1/zavou/ANNFASS_CODE/decorgan_results/from_turing/sep19/trained_on_chairs/any_share_3_m02_s128/encodings_furniture_lun
+#lun_furniture_model ?= decorgan_any_share_3_m02_s128
+#lun_furniture_model_yml ?= any_share_3_m02_s128
+lun_furniture_mesh:
+	cd $(style_detection_src)/common && python ply2obj.py --ply_dir /media/graphicslab/BigData1/zavou/ANNFASS_DATA/compressed_files/Data-all/Data/furniture/mesh
+lun_furniture_objs:
+	cd $(style_detection_src)/common && python move_files.py --in_dir /media/graphicslab/BigData1/zavou/ANNFASS_DATA/compressed_files/Data-all/Data/furniture/mesh --out_dir $(other_objs_dir)/furniture_lun --ext .obj --rename whole/model
+lun_furniture_cross_val:
+	cd $(style_detection_src)/splits/lun && python create_cross_val.py --obj_dir /media/graphicslab/BigData1/zavou/ANNFASS_DATA/compressed_files/Data-all/Data/furniture/mesh --out_dir $(styledetect_logs)/lun_data/furniture --num_folds $(cross_val) --styles FS1,FS2,FS3,FS4,FS5,FS6 --expected_total 278 --label_file /media/graphicslab/BigData1/zavou/ANNFASS_DATA/compressed_files/Data-all/Data/furniture/labels.txt
+lun_furniture_export_txt:
+	cd $(style_detection_src)/splits/lun && python create_export_file_decorgan.py --data_dir $(decorgan_logs)/preprocessed_data/furniture_lun --txt_file $(decorgan_logs)/splits/furniture_lun/export.txt
+lun_furniture_export:
+	cd $(decor_gan_private_src) && $(decor_py) mymain.py --config_yml settings/local/export/trained_on_shapenet_chair/furniture_lun/$(lun_furniture_model_yml).yml --gpu 0
+#lun_furniture_csv:
+	#cd $(style_detection_src)/sklearn_impl/lun_building_furniture && python split_csv_generation.py --data_dirs $(lun_furniture_encodings_dir) --out_dir $(styledetect_logs)/lun_data/furniture/$(lun_furniture_model)/classification_cross_val_$(cross_val)_csv --splits $(styledetect_logs)/lun_data/furniture/classification_cross_val_$(cross_val).json --styles FS1,FS2,FS3,FS4,FS5,FS6 --label_file /media/graphicslab/BigData1/zavou/ANNFASS_DATA/compressed_files/Data-all/Data/furniture/labels.txt --expected_total 278
+lun_furniture_csv_wrapper:
+	cd $(style_detection_src)/sklearn_impl/lun_building_furniture && python split_csv_generation_wrapper.py --data_dir $(lun_furniture_encodings_dir) --out_dir $(styledetect_logs)/lun_data/furniture/$(lun_furniture_model)/classification_cross_val_$(cross_val)_csv --splits $(styledetect_logs)/lun_data/furniture/classification_cross_val_$(cross_val).json --styles FS1,FS2,FS3,FS4,FS5,FS6 --label_file /media/graphicslab/BigData1/zavou/ANNFASS_DATA/compressed_files/Data-all/Data/furniture/labels.txt --expected_total 278 --py_exe $(style_detect_py)
+#lun_furniture_svm:
+	#cd $(style_detection_src)/sklearn_impl/ && python run_svm.py --data_dir $(styledetect_logs)/lun_data/furniture/$(lun_furniture_model)/classification_cross_val_$(cross_val)_csv --models_dir $(styledetect_logs)/lun_data/furniture/$(lun_furniture_model)/classification_cross_val_$(cross_val)_svm --folds $(cross_val) --svm_impl simple --classes FS1,FS2,FS3,FS4,FS5,FS6
+lun_furniture_svm_wrapper:
+	cd $(style_detection_src)/sklearn_impl/ && python run_svm_wrapper_other.py --data_dir $(styledetect_logs)/lun_data/furniture/$(lun_furniture_model)/classification_cross_val_$(cross_val)_csv --models_dir $(styledetect_logs)/lun_data/furniture/$(lun_furniture_model)/classification_cross_val_$(cross_val)_svm --folds $(cross_val) --svm_impl simple --classes FS1,FS2,FS3,FS4,FS5,FS6 --py_exe $(style_detect_py)
+
+
+
+#lun_building_encodings_dir ?= /media/graphicslab/BigData1/zavou/ANNFASS_CODE/decorgan_results/from_turing/sep17/trained_on_buildnet_buildings/setA/original_clean/s8/encodings_building_lun
+#lun_building_model ?= decorgan_original
+#lun_building_model_yml ?= original_s8
+lun_building_encodings_dir ?= /media/graphicslab/BigData1/zavou/ANNFASS_CODE/decorgan_results/from_turing/sep17/trained_on_buildnet_buildings/setA/ajd_flexdp2/in16_out128/encodings_building_lun
+lun_building_model ?= decorgan_with_se
+lun_building_model_yml ?= adj_s32
+#lun_building_encodings_dir ?= /media/graphicslab/BigData1/zavou/ANNFASS_CODE/decorgan_results/from_turing/sep19/trained_on_buildnet_buildings/any_share_1/m02_s128_g5d5/encodings_lun/discr_plaus/max
+#lun_building_model ?= decorgan_any_1_s128_g5d5/discr_plaus
+#lun_building_model_yml ?= any_share_1_m02_s128_g5d5
+#lun_building_encodings_dir ?= /media/graphicslab/BigData1/zavou/ANNFASS_CODE/decorgan_results/from_turing/sep19/trained_on_buildnet_buildings/any_share_1/m02_s128_g5d5/encodings_lun/discr_common/max
+#lun_building_model ?= decorgan_any_1_s128_g5d5/discr_common
+#lun_building_model_yml ?= any_share_1_m02_s128_g5d5
+#lun_building_encodings_dir ?= /media/graphicslab/BigData1/zavou/ANNFASS_CODE/decorgan_results/from_turing/sep19/trained_on_buildnet_buildings/any_share_1/m02_s128_g5d5/encodings_lun/discr_style/max
+#lun_building_model ?= decorgan_any_1_s128_g5d5/discr_style
+#lun_building_model_yml ?= any_share_1_m02_s128_g5d5
+#lun_building_encodings_dir ?= /media/graphicslab/BigData1/zavou/ANNFASS_CODE/decorgan_results/from_turing/sep17/trained_on_buildnet_buildings/setA/adain_dp2_in16_out128/g32d32/encodings_building_lun
+#lun_building_model ?= adain_p2_in16_out128_g32d32
+#lun_building_model_yml ?= adain_p2_in16_out128_g32d32
+lun_building_cross_val:
+	cd $(style_detection_src)/splits/lun && python create_cross_val.py --obj_dir /media/graphicslab/BigData1/zavou/ANNFASS_DATA/compressed_files/Data-all/Data/building/mesh --out_dir $(styledetect_logs)/lun_data/building --num_folds $(cross_val) --styles gothic,byzantine,russian,baroque,asian --label_file /media/graphicslab/BigData1/zavou/ANNFASS_DATA/compressed_files/Data-all/Data/building/labels.txt --expected_total 221
+lun_building_export:
+	cd $(decor_gan_private_src) && $(decor_py) mymain.py --config_yml settings/local/export/trained_on_buildnet_buildings/building_lun/$(lun_building_model_yml).yml --gpu 0
+#lun_building_csv:
+	#cd $(style_detection_src)/sklearn_impl/lun_building_furniture && python split_csv_generation.py --data_dirs $(lun_building_encodings_dir) --out_dir $(styledetect_logs)/lun_data/building/$(lun_building_model)/classification_cross_val_$(cross_val)_csv --splits $(styledetect_logs)/lun_data/building/classification_cross_val_$(cross_val).json --styles 'gothic,byzantine,russian,baroque,asian' --label_file /media/graphicslab/BigData1/zavou/ANNFASS_DATA/compressed_files/Data-all/Data/building/labels.txt --expected_total 221
+lun_building_csv_wrapper:
+	cd $(style_detection_src)/sklearn_impl/lun_building_furniture && python split_csv_generation_wrapper.py --data_dir $(lun_building_encodings_dir) --out_dir $(styledetect_logs)/lun_data/building/$(lun_building_model)/classification_cross_val_$(cross_val)_csv --splits $(styledetect_logs)/lun_data/building/classification_cross_val_$(cross_val).json --styles 'gothic,byzantine,russian,baroque,asian' --label_file /media/graphicslab/BigData1/zavou/ANNFASS_DATA/compressed_files/Data-all/Data/building/labels.txt --expected_total 221 --py_exe $(style_detect_py)
+#lun_building_svm:
+	#cd $(style_detection_src)/sklearn_impl/ && python run_svm.py --data_dir $(styledetect_logs)/lun_data/building/$(lun_building_model)/classification_cross_val_$(cross_val)_csv --models_dir $(styledetect_logs)/lun_data/building/$(lun_building_model)/classification_cross_val_$(cross_val)_svm --folds $(cross_val) --svm_impl simple --classes 'gothic,byzantine,russian,baroque,asian'
+lun_building_svm_wrapper:
+	cd $(style_detection_src)/sklearn_impl/ && python run_svm_wrapper_other.py --data_dir $(styledetect_logs)/lun_data/building/$(lun_building_model)/classification_cross_val_$(cross_val)_csv --models_dir $(styledetect_logs)/lun_data/building/$(lun_building_model)/classification_cross_val_$(cross_val)_svm --folds $(cross_val) --svm_impl simple --classes 'gothic,byzantine,russian,baroque,asian' --py_exe $(style_detect_py)
+
+
+
+#lun_column_encodings_dir ?= /media/graphicslab/BigData1/zavou/ANNFASS_CODE/decorgan_results/from_turing/sep17/trained_on_buildnet_components/setA/original_clean/s8/encodings_column_lun/discr_all/max
+#lun_column_model ?= decorgan_original
+#lun_column_model_yml ?= original_s8
+lun_column_encodings_dir ?= /media/graphicslab/BigData1/zavou/ANNFASS_CODE/decorgan_results/from_turing/sep17/trained_on_buildnet_components/setA/adj_dp2/s32/encodings_column_lun/discr_all/max
+lun_column_model ?= adj_buildnet_s8
+lun_column_model_yml ?= adj_buildnet_s8
+lun_column_mesh:
+	cd $(style_detection_src)/common && python ply2obj.py --ply_dir /media/graphicslab/BigData1/zavou/ANNFASS_DATA/compressed_files/Data-all/Data/column/mesh
+lun_column_objs:
+	cd $(style_detection_src)/common && python move_files.py --in_dir /media/graphicslab/BigData1/zavou/ANNFASS_DATA/compressed_files/Data-all/Data/column/mesh --out_dir $(other_objs_dir)/column_lun --ext .obj --rename whole/model
+#then for each do ... python move_files.py --in_dir /media/graphicslab/BigData1/zavou/ANNFASS_DATA/compressed_files/Data-all/Data/objs/column_zhaoliang/C8 --out_dir /media/graphicslab/BigData1/zavou/ANNFASS_DATA/compressed_files/Data-all/Data/objs/column_zhaoliang_d --ext .obj --rename "" --copy True
+lun_column_cross_val:
+	cd $(style_detection_src)/splits/lun && python create_cross_val.py --obj_dir /media/graphicslab/BigData1/zavou/ANNFASS_DATA/compressed_files/Data-all/Data/column/mesh --out_dir $(styledetect_logs)/lun_data/column --num_folds $(cross_val) --styles C1,C2,C3,C5,C6,C8 --expected_total 67 --label_file /media/graphicslab/BigData1/zavou/ANNFASS_DATA/compressed_files/Data-all/Data/column/labels.txt
+lun_column_export_txt:
+	cd $(style_detection_src)/splits/lun && python create_export_file_decorgan.py --data_dir $(decorgan_logs)/preprocessed_data/column_lun --txt_file $(decorgan_logs)/splits/column_lun/export.txt
+lun_column_export:
+	cd $(decor_gan_private_src) && $(decor_py) mymain.py --config_yml settings/local/export/trained_on_buildnet_component/lun/$(lun_column_model_yml).yml --gpu 0
+lun_column_csv:
+	cd $(style_detection_src)/sklearn_impl/hu_lun_yu && python split_csv_generation.py --data_dirs $(lun_column_encodings_dir) --out_dir $(styledetect_logs)/lun_data/column/$(lun_column_model)/classification_cross_val_$(cross_val)_csv --splits $(styledetect_logs)/lun_data/column/classification_cross_val_$(cross_val).json --styles C1,C2,C3,C5,C6,C8 --expected_total 67
+lun_column_svm:
+	cd $(style_detection_src)/sklearn_impl/ && python run_svm.py --data_dir $(styledetect_logs)/lun_data/column/$(lun_column_model)/classification_cross_val_$(cross_val)_csv --models_dir $(styledetect_logs)/lun_data/column/$(lun_column_model)/classification_cross_val_$(cross_val)_svm --folds $(cross_val) --svm_impl simple --classes C1,C2,C3,C5,C6,C8
+

@@ -1,0 +1,78 @@
+{
+    "experiment_name": "experiment_aae_buildnet",
+    "results_root": "/media/graphicslab/BigData1/zavou/ANNFASS_CODE/3daae-results/buildnet/local/aae_test",
+    "clean_results_dir": false,
+
+    "cuda": true,
+
+    "reconstruction_loss": "chamfer",
+
+    "metrics": [
+    ],
+
+    "dataset": "BuildingComponentDataset2WithColor",
+    "num_features": 6,
+    "train_txt": "/media/graphicslab/BigData1/zavou/ANNFASS_CODE/style_detection/logs_final/unlabeled_data/setA_train_val_test/withcolor/BUILDNET_Buildings_groups_june17_colorPly_cut10.0K_pgc/unique/columndomedoorwindowtower/split_train_val_test/all.txt",
+    "val_txt": "/media/graphicslab/BigData1/zavou/ANNFASS_CODE/style_detection/logs_final/labeled_data/repeat_0/BUILDNET_Buildings_groups_june17_stylePly_cut10.0K_pgc_style2048ANNFASS_Buildings_may_stylePly_cut10.0K_pgc_style2048/unique/columndoordometowerwindow/fold0/split_test/test.txt",
+    "val_data_root": "/media/graphicslab/BigData1/zavou/ANNFASS_DATA",
+    "train_data_root": "/media/graphicslab/BigData1/zavou/ANNFASS_DATA",
+    "n_points": 2048,
+
+    "seed": 2018,
+    "save_frequency": 1,
+    "stat_frequency": 1,
+    "epsilon": 0.001,
+
+    "num_workers": 0,
+    "max_epochs": 2,
+    "batch_size": 64,
+    "gp_lambda": 10,
+    "reconstruction_coef": 0.05,
+    "distribution": "bernoulli",
+    "z_size": 2048,
+
+    "p": 0.2,
+    "z_beta_a": 0.01,
+    "z_beta_b": 0.01,
+
+    "normal_mu": 0.0,
+    "normal_std": 0.2,
+
+    "arch": "aae",
+    "model": {
+        "D": {
+            "dropout": 0.5,
+            "use_bias": true,
+            "relu_slope": 0.2
+        },
+        "G": {
+            "use_bias": true,
+            "relu_slope": 0.2
+        },
+        "E": {
+            "use_bias": true,
+            "relu_slope": 0.2
+        }
+
+    },
+    "optimizer": {
+        "D": {
+            "type": "Adam",
+            "hyperparams": {
+                "lr": 0.0005,
+                "weight_decay": 0,
+                "betas": [0.9, 0.999],
+                "amsgrad": false
+            }
+        },
+        "EG": {
+            "type": "Adam",
+            "hyperparams": {
+                "lr": 0.0005,
+                "weight_decay": 0,
+                "betas": [0.9, 0.999],
+                "amsgrad": false
+            }
+        }
+    }
+}

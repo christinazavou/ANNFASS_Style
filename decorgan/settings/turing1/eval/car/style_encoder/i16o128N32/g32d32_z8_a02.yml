@@ -1,0 +1,69 @@
+
+epoch: 20
+iteration: 0
+
+g_steps: 1
+d_steps: 1
+r_steps: 4
+
+gen_dim: 32
+disc_dim: 32
+style_dim: 8
+
+save_iter: 2000
+log_iter: 500
+model_module: runners.style_encoder.modelAEadj_flexdp2Speed
+recon_loss: MSE
+style_batch: 4
+kernel: 5
+dilation: True
+pooling: max
+
+data_filename: model_depth_fusion.binvox
+style_filename: model_depth_fusion.binvox
+datapath: /home/czavou01/decorgan-logs/splits/content_car_train_2K.txt
+stylepath: /home/czavou01/decorgan-logs/splits/style_car_32.txt
+data_cache_dir: /home/czavou01/decorgan-logs/data_cached_2_in16_out128
+style_cache_dir: /home/czavou01/decorgan-logs/data_cached_2_in16_out128
+data_dir: /home/czavou01/decorgan-logs/data/02958343
+style_dir: /home/czavou01/decorgan-logs/data/02958343
+
+checkpoint_dir: /mnt/beegfs/czavou01/decorgan-models/cars/style_encoder/i16o128N32/g32d32_z8_a02/checkpoints
+sample_dir: /mnt/beegfs/czavou01/decorgan-models/cars/style_encoder/i16o128N32/g32d32_z8_a02/samples
+export_dir: /mnt/beegfs/czavou01/decorgan-models/cars/style_encoder/i16o128N32/g32d32_z8_a02/encodings
+test_fig_3_dir: /mnt/beegfs/czavou01/decorgan-models/cars/style_encoder/i16o128N32/g32d32_z8_a02/test_fig_3
+style_codes_dir: /mnt/beegfs/czavou01/decorgan-models/cars/style_encoder/i16o128N32/g32d32_z8_a02/style_codes
+
+input_size: 16
+output_size: 128
+
+asymmetry: True
+
+alpha: 0.2
+beta: 10.0
+
+train: False
+style_codes: False
+test_fig_3: False
+export: False
+debug: False
+
+output_for_eval_dir: /mnt/beegfs/czavou01/decorgan-models/cars/style_encoder/i16o128N32/g32d32_z8_a02/output_for_eval
+output_for_FID_dir: /mnt/beegfs/czavou01/decorgan-models/cars/style_encoder/i16o128N32/g32d32_z8_a02/output_for_FID
+eval_output_dir: /mnt/beegfs/czavou01/decorgan-models/cars/style_encoder/i16o128N32/g32d32_z8_a02/eval_output
+
+unique_patches_dir: /home/czavou01/decorgan-models/unique_patches_32_cars_i16o128
+cls_dir: /home/czavou01/decorgan-logs/Clsshapenet_weights
+
+prepvox: True
+prepvoxstyle: True
+evalvox: True
+
+prepimg: False
+prepimgreal: False
+evalimg: False
+prepFID: False
+prepFIDmodel: False
+prepFIDreal: False
+evalFID: False
+ui: False

@@ -1,0 +1,72 @@
+
+epoch: 20
+iteration: 0
+
+g_steps: 1
+d_steps: 1
+r_steps: 4
+
+patch_num: 1
+patch_factor: 1
+stride_factor: 1
+
+gen_dim: 16
+disc_dim: 16
+style_dim: 8
+
+save_iter: 1000
+log_iter: 500
+model_module: runners.modelAE_flexdp2
+cycle_factor: 10
+recon_loss: MSE
+cycle_loss: L1
+lr: 0.0001
+se_lr: 0.0001
+nt_xent_factor: 1.
+tau: 0.5
+style_batch: 4
+kernel: 5
+dilation: True
+pooling: max
+
+buildings_dir:
+data_filename: model_depth_fusion.binvox
+style_filename: model_depth_fusion.binvox
+datapath: /home/czavou01/decorgan-logs/splits/content_chair_train.txt
+stylepath: /home/czavou01/decorgan-logs/splits/style_chair_64.txt
+data_cache_dir: /home/czavou01/decorgan-logs/data_cached_2_in16_out128
+style_cache_dir: /home/czavou01/decorgan-logs/data_cached_2_in16_out128
+data_dir: /home/czavou01/decorgan-logs/data/03001627
+style_dir: /home/czavou01/decorgan-logs/data/03001627
+
+checkpoint_dir: /home/czavou01/decorgan-models/chair/original/i16o128_z8g16d16/checkpoints
+sample_dir: /home/czavou01/decorgan-models/chair/original/i16o128_z8g16d16/samples/
+export_dir: /home/czavou01/decorgan-models/chair/original/i16o128_z8g16d16/encodings/
+test_fig_3_dir: /home/czavou01/decorgan-models/chair/original/i16o128_z8g16d16/test_fig_3
+style_codes_dir: /home/czavou01/decorgan-models/chair/original/i16o128_z8g16d16/style_codes
+
+input_size: 16
+output_size: 128
+
+asymmetry: True
+
+alpha: 0.5
+beta: 10.0
+
+train: True
+style_codes: False
+test_fig_3: False
+export: False
+debug: False
+
+prepvox: False
+prepvoxstyle: False
+evalvox: False
+prepimg: False
+prepimgreal: False
+evalimg: False
+prepFID: False
+prepFIDmodel: False
+prepFIDreal: False
+evalFID: False
+ui: False

@@ -1,0 +1,77 @@
+{
+    "experiment_name": "experiment_aae_buildnet1",
+    "results_root": "/mnt/beegfs/czavou01/3daae-models",
+    "clean_results_dir": false,
+
+    "cuda": true,
+
+    "reconstruction_loss": "chamfer",
+
+    "metrics": [
+    ],
+
+    "dataset": "BuildingComponentDataset2",
+    "train_txt": "/mnt/beegfs/czavou01/3daae-logs/split/train.txt",
+    "val_txt": "/mnt/beegfs/czavou01/3daae-logs/split/val.txt",
+    "val_data_root": "/mnt/beegfs/czavou01/ANNFASS_DATA",
+    "train_data_root": "/mnt/beegfs/czavou01/ANNFASS_DATA",
+    "n_points": 2048,
+
+    "seed": 2018,
+    "save_frequency": 500,
+    "stat_frequency": 250,
+    "epsilon": 0.001,
+
+    "num_workers": 1,
+    "max_epochs": 2000,
+    "batch_size": 64,
+    "gp_lambda": 10,
+    "reconstruction_coef": 0.05,
+    "distribution": "bernoulli",
+    "z_size": 2048,
+
+    "p": 0.2,
+    "z_beta_a": 0.01,
+    "z_beta_b": 0.01,
+
+    "normal_mu": 0.0,
+    "normal_std": 0.2,
+
+    "arch": "aae",
+    "model": {
+        "D": {
+            "dropout": 0.5,
+            "use_bias": true,
+            "relu_slope": 0.2
+        },
+        "G": {
+            "use_bias": true,
+            "relu_slope": 0.2
+        },
+        "E": {
+            "use_bias": true,
+            "relu_slope": 0.2
+        }
+
+    },
+    "optimizer": {
+        "D": {
+            "type": "Adam",
+            "hyperparams": {
+                "lr": 0.0005,
+                "weight_decay": 0,
+                "betas": [0.9, 0.999],
+                "amsgrad": false
+            }
+        },
+        "EG": {
+            "type": "Adam",
+            "hyperparams": {
+                "lr": 0.0005,
+                "weight_decay": 0,
+                "betas": [0.9, 0.999],
+                "amsgrad": false
+            }
+        }
+    }
+}

@@ -1,0 +1,61 @@
+
+epoch: 20
+iteration: 0
+
+g_steps: 1
+d_steps: 1
+r_steps: 4
+
+gen_dim: 32
+disc_dim: 32
+style_dim: 8
+
+save_iter: 4000
+log_iter: 1000
+model_module: runners.original.modelAE_flexdp2
+recon_loss: MSE
+style_batch: 4
+kernel: 5
+dilation: True
+pooling: max
+
+data_filename: model_filled.binvox
+style_filename: model_depth_fusion.binvox
+datapath: /media/graphicslab/BigData1/zavou/ANNFASS_CODE/decorgan-logs/HU_YU_LUN_BUILDNET/splits/car_yu_tri_norm_and_align/export.txt
+stylepath: /media/graphicslab/BigData1/zavou/ANNFASS_CODE/decorgan-logs/splits/car/style_car_32.txt
+data_cache_dir:
+style_cache_dir:
+data_dir: /media/graphicslab/BigData1/zavou/ANNFASS_CODE/decorgan-logs/HU_YU_LUN_BUILDNET/preprocessed_data/car_yu_tri_norm_and_align
+style_dir: /media/graphicslab/BigData1/zavou/ANNFASS_CODE/decorgan-logs/data/02958343
+
+checkpoint_dir: /media/graphicslab/BigData1/zavou/ANNFASS_CODE/decorgan_results/from_turing/trained_on_cars/original/i16o128N32/g32d32z8_a02/checkpoints
+sample_dir: /media/graphicslab/BigData1/zavou/ANNFASS_CODE/decorgan_results/from_turing/trained_on_cars/original/i16o128N32/g32d32z8_a02/samples
+export_dir: /media/graphicslab/BigData1/zavou/ANNFASS_CODE/decorgan_results/from_turing/trained_on_cars/original/i16o128N32/g32d32z8_a02/encodings_car_yu_tri_norm_and_align
+test_fig_3_dir: /media/graphicslab/BigData1/zavou/ANNFASS_CODE/decorgan_results/from_turing/trained_on_cars/original/i16o128N32/g32d32z8_a02/test_fig_3
+style_codes_dir: /media/graphicslab/BigData1/zavou/ANNFASS_CODE/decorgan_results/from_turing/trained_on_cars/original/i16o128N32/g32d32z8_a02/style_codes
+
+input_size: 16
+output_size: 128
+
+asymmetry: True
+
+alpha: 0.2
+beta: 10.0
+
+train: False
+style_codes: False
+test_fig_3: False
+export: True
+debug: False
+
+prepvox: False
+prepvoxstyle: False
+evalvox: False
+prepimg: False
+prepimgreal: False
+evalimg: False
+prepFID: False
+prepFIDmodel: False
+prepFIDreal: False
+evalFID: False
+ui: False

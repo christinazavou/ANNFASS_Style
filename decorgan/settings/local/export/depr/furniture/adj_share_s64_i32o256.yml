@@ -1,0 +1,69 @@
+
+epoch: 20
+iteration: 0
+
+g_steps: 1
+d_steps: 1
+r_steps: 4
+
+patch_num: 1
+patch_factor: 1
+stride_factor: 1
+
+save_iter: 1000
+log_iter: 500
+model_module: runners_pytorch3d.modelAEadj_flexdp2_share
+cycle_factor: 10
+recon_loss: MSE
+cycle_loss: L1
+lr: 0.0001
+se_lr: 0.0001
+style_dim: 64
+nt_xent_factor: 1.
+tau: 0.5
+style_batch: 4
+kernel: 5
+dilation: True
+pooling: max
+
+buildings_dir:
+data_filename: model_filled.binvox
+style_filename: model_filled.binvox
+datapath: /media/graphicslab/BigData/zavou/ANNFASS_CODE/decorgan-logs/splits/export_furniture.txt
+stylepath:  /media/graphicslab/BigData/zavou/ANNFASS_CODE/decorgan-logs/splits/furniture_styles32.txt
+data_cache_dir: /media/graphicslab/BigData/zavou/ANNFASS_CODE/decorgan-logs/data_cached_2_in32_out256
+style_cache_dir: /media/graphicslab/BigData/zavou/ANNFASS_CODE/decorgan-logs/data_cached_2_in32_out256
+style_dir: /media/graphicslab/BigData/zavou/ANNFASS_CODE/decorgan-logs/preprocessed_data/furniture
+data_dir: /media/graphicslab/BigData/zavou/ANNFASS_CODE/decorgan-logs/preprocessed_data/furniture
+
+checkpoint_dir: /media/graphicslab/BigData/zavou/ANNFASS_CODE/decorgan_results/from_turing/aug30/adj_flexdp2_share/in32_out256/furniture/s64/checkpoints
+sample_dir: /media/graphicslab/BigData/zavou/ANNFASS_CODE/decorgan_results/from_turing/aug30/adj_flexdp2_share/in32_out256/furniture/s64/samples/
+export_dir: /media/graphicslab/BigData/zavou/ANNFASS_CODE/decorgan_results/from_turing/aug30/adj_flexdp2_share/in32_out256/furniture/s64/encodings/
+test_fig_3_dir: /media/graphicslab/BigData/zavou/ANNFASS_CODE/decorgan_results/from_turing/aug30/adj_flexdp2_share/in32_out256/furniture/s64/test_fig_3
+style_codes_dir: /media/graphicslab/BigData/zavou/ANNFASS_CODE/decorgan_results/from_turing/aug30/adj_flexdp2_share/in32_out256/furniture/s64/style_codes
+
+input_size: 32
+output_size: 256
+
+asymmetry: True
+
+alpha: 0.5
+beta: 10.0
+
+train: False
+style_codes: False
+test_fig_3: False
+export: True
+debug: False
+
+prepvox: False
+prepvoxstyle: False
+evalvox: False
+prepimg: False
+prepimgreal: False
+evalimg: False
+prepFID: False
+prepFIDmodel: False
+prepFIDreal: False
+evalFID: False
+ui: False

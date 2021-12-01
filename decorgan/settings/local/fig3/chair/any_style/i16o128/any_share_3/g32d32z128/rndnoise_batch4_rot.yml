@@ -1,0 +1,74 @@
+
+epoch: 25
+iteration: 0
+
+g_steps: 1
+d_steps: 1
+r_steps: 4
+
+disc_dim: 32
+gen_dim: 32
+style_dim: 128
+
+batch_size: 4
+
+save_iter: 2259
+log_iter: 564
+model_module: runners.any_style.modelAEany_share_x_rot_mul_rndnoise_batchdiv
+recon_loss: MSE
+lr: 0.0001
+margin: 0.2
+kernel: 5
+dilation: True
+pooling: max
+
+num_pairs: 64
+num_triplets: 64
+
+data_filename: model_filled.binvox
+style_filename: model_filled.binvox
+val_filename: model_filled.binvox
+datapath: /media/graphicslab/BigData1/zavou/ANNFASS_CODE/decorgan-logs/splits/chair/chair_fig3_content.txt
+stylepath: /media/graphicslab/BigData1/zavou/ANNFASS_CODE/decorgan-logs/splits/chair/style_chair_32.txt
+valpath: /media/graphicslab/BigData1/zavou/ANNFASS_CODE/decorgan-logs/HU_YU_LUN_BUILDNET/splits/03001627_test_objs_norm_and_random_rot/content_chair_random_rot_test.txt
+data_cache_dir:
+style_cache_dir:
+val_cache_dir:
+style_dir: /media/graphicslab/BigData1/zavou/ANNFASS_CODE/decorgan-logs/HU_YU_LUN_BUILDNET/preprocessed_data/03001627_train_objs_norm_and_random_rot
+data_dir: /media/graphicslab/BigData1/zavou/ANNFASS_CODE/decorgan-logs/HU_YU_LUN_BUILDNET/preprocessed_data/03001627_train_objs_norm_and_random_rot
+val_dir: /media/graphicslab/BigData1/zavou/ANNFASS_CODE/decorgan-logs/HU_YU_LUN_BUILDNET/preprocessed_data/03001627_test_objs_norm_and_random_rot
+style_indices: "6, 17, 21, 22, 25, 27, 3, 15, 20"
+
+checkpoint_dir: /media/graphicslab/BigData1/zavou/ANNFASS_CODE/decorgan_results/from_turing/trained_on_chairs/any_style/i16o128/any_share_3/g32d32z128/rndnoise_batch4_rot/checkpoints
+sample_dir: /media/graphicslab/BigData1/zavou/ANNFASS_CODE/decorgan_results/from_turing/trained_on_chairs/any_style/i16o128/any_share_3/g32d32z128/rndnoise_batch4_rot/samples_again
+export_dir: /media/graphicslab/BigData1/zavou/ANNFASS_CODE/decorgan_results/from_turing/trained_on_chairs/any_style/i16o128/any_share_3/g32d32z128/rndnoise_batch4_rot/encodings
+test_fig_3_dir: /media/graphicslab/BigData1/zavou/ANNFASS_CODE/decorgan_results/from_turing/trained_on_chairs/any_style/i16o128/any_share_3/g32d32z128/rndnoise_batch4_rot/test_fig_3
+style_codes_dir: /media/graphicslab/BigData1/zavou/ANNFASS_CODE/decorgan_results/from_turing/trained_on_chairs/any_style/i16o128/any_share_3/g32d32z128/rndnoise_batch4_rot/style_codes
+
+input_size: 16
+output_size: 128
+
+asymmetry: True
+
+alpha: 1.
+beta: 10.0
+gamma: 1.
+delta: 1.
+
+train: False
+style_codes: False
+test_fig_3: True
+export: False
+debug: False
+
+prepvox: False
+prepvoxstyle: False
+evalvox: False
+prepimg: False
+prepimgreal: False
+evalimg: False
+prepFID: False
+prepFIDmodel: False
+prepFIDreal: False
+evalFID: False
+ui: False

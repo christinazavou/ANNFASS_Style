@@ -1,0 +1,65 @@
+
+epoch: 20
+iteration: 0
+
+g_steps: 1
+d_steps: 1
+r_steps: 4
+
+disc_dim: 32
+gen_dim: 32
+style_dim: 8
+
+batch_size: 8
+
+save_iter: 2259
+log_iter: 564
+model_module: runners.original.modelAE_flexdp2_batchdiv_and_eval
+recon_loss: MSE
+lr: 0.0001
+se_lr: 0.0001
+kernel: 5
+dilation: True
+pooling: max
+
+data_filename: model_depth_fusion.binvox
+style_filename: model_depth_fusion.binvox
+datapath: /home/czavou01/decorgan-logs/splits/content_chair_train.txt
+stylepath: /home/czavou01/decorgan-logs/splits/style_chair_64.txt
+valpath: /home/czavou01/decorgan-logs/splits/chair/content_chair_test.txt
+data_cache_dir: /mnt/beegfs/czavou01/decorgan-logs/data_cached_2_i16o128
+style_cache_dir: /mnt/beegfs/czavou01/decorgan-logs/data_cached_2_i16o128
+style_dir: /home/czavou01/decorgan-logs/data/03001627
+data_dir: /home/czavou01/decorgan-logs/data/03001627
+
+checkpoint_dir: /mnt/beegfs/czavou01/decorgan-models/chair/original/i16o128/batchdiv8_eval/checkpoints
+sample_dir: /mnt/beegfs/czavou01/decorgan-models/chair/original/i16o128/batchdiv8_eval/samples/
+export_dir: /mnt/beegfs/czavou01/decorgan-models/chair/original/i16o128/batchdiv8_eval/encodings/
+test_fig_3_dir: /mnt/beegfs/czavou01/decorgan-models/chair/original/i16o128/batchdiv8_eval/test_fig_3
+style_codes_dir: /mnt/beegfs/czavou01/decorgan-models/chair/original/i16o128/batchdiv8_eval/style_codes
+
+input_size: 16
+output_size: 128
+
+asymmetry: True
+
+alpha: 0.5
+beta: 10.0
+
+train: True
+style_codes: False
+test_fig_3: False
+export: False
+debug: False
+
+prepvox: False
+prepvoxstyle: False
+evalvox: False
+prepimg: False
+prepimgreal: False
+evalimg: False
+prepFID: False
+prepFIDmodel: False
+prepFIDreal: False
+evalFID: False
+ui: False
