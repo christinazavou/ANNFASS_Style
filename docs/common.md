@@ -39,7 +39,7 @@ Open objs from normalizedObj and change some uvs maps and some materials:
  11. Export obj in new folder with the filename suffix "_refinedTextures" 
  12. Create a buildings.csv with the buildings replaced with the suffix..
  ```
- ![blender img](resources/blender_re_texture.png?raw=true "Example how process looks in Blender interface")
+ ![blender img](../resources/blender_re_texture.png?raw=true "Example how process looks in Blender interface")
 
 
 To generate colour point clouds for Annfass buildings:

@@ -18,7 +18,7 @@ def get_and_save_access():
             credentials.refresh(Request())
         else:
             flow = InstalledAppFlow.from_client_secrets_file('credentials.json', SCOPES)
-            credentials = flow.run_local_server(port=0)
+            credentials = flow.run_local_server(port=8070)
         with open('token.pickle', 'wb') as token:
             pickle.dump(credentials, token)
     return credentials

@@ -1,6 +1,6 @@
 import math
 
-from mathutils import Matrix
+from scipy.spatial.transform import Rotation as R
 
 from common import _THRESHOLD_TOL_32, _THRESHOLD_TOL_64
 from common.mesh_utils_io import *
@@ -25,9 +25,26 @@ def centralize_obj(vertices):
     return vertices
 
 
+def rotation_matrix_4x4(angle_degrees, axis):
+    # Convert angle from degrees to radians
+    angle_rad = math.radians(angle_degrees)
+    # Make sure axis is a numpy array and normalized
+    axis = np.array(axis, dtype=float)
+    axis = axis / np.linalg.norm(axis)
+    # Create a Rotation object from rotation vector (axis * angle)
+    rot = R.from_rotvec(angle_rad * axis)
+    # Get 3x3 rotation matrix
+    rot_mat_3x3 = rot.as_matrix()
+    # Create 4x4 identity matrix
+    rot_mat_4x4 = np.eye(4)
+    # Put the 3x3 rotation matrix in the top-left corner
+    rot_mat_4x4[:3, :3] = rot_mat_3x3
+    return rot_mat_4x4
+
+
 def rotate(vertices, angle=30, axis=(0, 1, 0)):
     assert isinstance(vertices, np.ndarray)
-    tr = Matrix.Rotation(math.radians(angle), 4, axis)
+    tr = rotation_matrix_4x4(angle, axis)
     vertices_tr = np.c_[vertices, np.ones(vertices.shape[0])] @ tr
     vertices = vertices_tr[:, 0:3]
     return vertices

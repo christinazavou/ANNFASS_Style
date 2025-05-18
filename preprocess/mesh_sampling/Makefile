@@ -1,8 +1,10 @@
-#git clone https://github.com/christinazavou/mesh_sampling.git
+#git clone git@github.com:christinazavou/mesh_sampling.git
 SHELL:=/bin/bash # otherwise we can't use "source"
 
 CLUSTER_BUILD_DIR := build_swarm2
 SFE_FOLDER := shapefeatureexporter
+INPUT_SHAPE := /home/graphicslab/Desktop/uvnorm/02_Panagia_Chrysaliniotissa/02_Panagia_Chrysaliniotissa.obj
+NUM_PTS := 300000
 
 # make sure gcc version 5 is available before the build (e.g. module load GCC/5.4.0-2.26)
 # also make sure cmake is there (e.g. module load CMake/3.9.6)
@@ -27,5 +29,6 @@ run-shape-feature-exporter:
 		&& ./build/ShapeFeatureExporter \
 			--do-not-rescale-shape \
 			--export-point-samples \
-			--num-point-samples 300000 \
-			--input-shape="/home/graphicslab/Desktop/uvnorm/02_Panagia_Chrysaliniotissa/02_Panagia_Chrysaliniotissa.obj"
+			--num-point-samples $(NUM_PTS) \
+			--input-shape=$(INPUT_SHAPE)
+
